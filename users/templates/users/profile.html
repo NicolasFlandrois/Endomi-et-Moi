@@ -24,7 +24,11 @@
   <div class="container-fluid bgimg w-100 h-50 mb-4">
     <div class="d-flex flex-column h-20 justify-content-center text-center">
       <p class="h1 well font-weight-bold text-dark-70 m-4">Bonjour</p>
+      {% if user.first_name %}
       <p class="h2 well font-weight-bold text-dark-70 m-4">{{ user.first_name|title }}</p>
+      {% else %}
+      <p class="h2 well font-weight-bold text-dark-70 m-4">{{ user.username }}</p>
+      {% endif %}
     </div>
   </div>
 
