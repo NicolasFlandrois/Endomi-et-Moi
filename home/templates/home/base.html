@@ -30,31 +30,28 @@
   <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
-    {% if user.is_authenticated %}
-      <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading">Mon Endomi</div>
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading justify-content-center py-1">
+        <a  href="{% url 'home' %}" title="Accueil" alt="Accueil Mon Endomi">Mon Endomi</a>
+      </div>
         <div class="list-group list-group-flush">
-          <a href="{% url 'profile' %}" class="list-group-item list-group-item-action bg-light" title="Mon Compte" alt="Mon Compte">Mon Compte</a>
-          <a href="{% url 'logout' %}" class="list-group-item list-group-item-action bg-light" title="Déconnexion" alt="Déconnexion">Déconnexion</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light" title="Mon Suivi" alt="Mon Suivi">Mon suivi</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light" title="Mes Graph" alt="Mes Graph">Mes Graph</a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}" class="list-group-item list-group-item-action bg-light" title="Mon Compte" alt="Mon Compte">Mon Compte</a>
+            <a href="{% url 'logout' %}" class="list-group-item list-group-item-action bg-light" title="Déconnexion" alt="Déconnexion">Déconnexion</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light" title="Mon Suivi" alt="Mon Suivi">Mon suivi</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light" title="Mes Graph" alt="Mes Graph">Mes Graph</a>
+          {% else %}
+            <a href="{% url 'login' %}" class="list-group-item list-group-item-action bg-light" title="Connexion" alt="Connexion">Connexion</a>
+            <a href="{% url 'register' %}" class="flex-fill list-group-item list-group-item-action bg-light" title="Créer un Compte" alt="Créer un Compte">Créer un compte</a>
+          {% endif %}
         </div>
       </div>
-    {% else %}
-      <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading">Mon Endomi</div>
-        <div class="list-group list-group-flush">
-          <a href="{% url 'login' %}" class="list-group-item list-group-item-action bg-light" title="Connexion" alt="Connexion">Connexion</a>
-          <a href="{% url 'register' %}" class="list-group-item list-group-item-action bg-light" title="Créer un Compte" alt="Créer un Compte">Créer un compte</a>
-        </div>
-      </div>
-    {% endif %}
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-    <div id="page-content-wrapper">
+    <div class="col-xl-11" id="page-content-wrapper">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light border-bottom py-1" id="mainNav">
         <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +61,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'home' %}" title="Accueil" alt="Accueil Mon Endomi">Page d'Accueil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
@@ -93,6 +90,20 @@
 
   </div>
   <!-- /#wrapper -->
+
+  <!-- Footer -->
+  <footer class="footer fixed-bottom bg-light">
+    <div class="container d-flex footer_block">
+      <div class="m-3 mx-auto small text-center text-gray-dark">
+        <a href="{% url 'legal' %}">Mentions Legales</a>
+      </div>
+      <div class="m-3 mx-auto small text-center text-gray-dark">Copyright &copy; 2020 - Nicolas Flandrois</div>
+      <div class="m-3 mx-auto small text-center text-gray-dark">
+        <a href="{% url 'home' %}?#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'home/vendor/jquery/jquery.min.js' %}"></script>
