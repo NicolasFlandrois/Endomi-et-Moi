@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'endomi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # on utilise l'adaptateur postgresql
-        'NAME': 'pur_beurre',  # le nom de notre base de donnees creee precedemment
+        'NAME': 'endomi',  # le nom de notre base de donnees creee precedemment
         # attention : remplacez par votre nom d'utilisateur
         'USER': os.environ.get('MYSQL_USER'),
         'PASSWORD': os.environ.get('MYSQL_PASS'),
