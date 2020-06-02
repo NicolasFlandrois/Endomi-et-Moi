@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Nicolas Flandrois">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Pur Beurre plateforme de substitution">
+
+  {% if title %}
+      <title>Pur Beurre - {{ title }}</title>
+  {% else %}
+      <title>Pur Beurre</title>
+  {% endif %}
+  <link rel="icon" type="image/png" href="{% static 'home/img/logo_pur_beurre-favicon.png' %}" />
+
+  <!-- Font Awesome Icons -->
+  <link href="{% static 'home/vendor/fontawesome-free/css/all.css' %}" rel="stylesheet" type="text/css">
+
+  <!-- Google Fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
+
+  <!-- Plugin CSS -->
+  <link href="{% static 'home/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+  <!-- Theme CSS - Includes Bootstrap -->
+  <link href="{% static 'home/css/creative.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="container-fluid navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <!-- Left Side -->
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}" title="Accueil" alt="[LOGO]"><img src="{% static 'home/img/logo_pur_beurre.png' %}" alt="Pur Beurre Logo" height="50em;" width="auto"></a>
+      <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}" title="Accueil" alt="Pur Beurre">Pur Beurre</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <!-- Right Side -->
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <!-- Search a Product -->
+            <div class="container-fluid d-flex justify-content-center p-2 mr-3" >
+                <form class="form-inline" action="/snacks/search/" method="GET">
+                    <input type="text" name="search" class="form-control mb-2 mr-sm-2" placeholder="Produit à substituer" required="required" title="Produit à Substituer">
+                    <input type="submit" class="btn btn-secondary mb-2" value="chercher" title="Chercher">
+                </form>
+            </div>
+            <!-- End Search bar -->
+          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'profile' %}" title="Mon Compte" alt="Mon Compte"><i style="font-size: 3em;" class="far fa-user" ></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'favourites' %}" title="Favoris" alt="Mes Favoris"><img src="{% static 'home/img/icon_carrot2.png' %}" height="50em" width="auto"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}" title="Déconnexion" alt="Déconnexion"><i style="font-size: 3em;" class="fas fa-sign-out-alt"></i></a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'login' %}" title="Connexion" alt="Connexion"><i style="font-size: 3em;" class="fas fa-sign-in-alt"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'register' %}" title="Créer un Compte" alt="Créer un Compte"><i style="font-size: 3em;" class="far fa-plus-square"></i></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  {% block title %}{% endblock %}
+
+
+
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+  <footer class="footer fixed-bottom bg-light">
+    <div class="container d-flex footer_block">
+      <div class="m-3 mx-auto small text-center text-gray-dark">
+        <a href="{% url 'legal' %}">Mentions Legales</a>
+      </div>
+      <div class="m-3 mx-auto small text-center text-gray-dark">Copyright &copy; 2019 - Nicolas Flandrois</div>
+      <div class="m-3 mx-auto small text-center text-gray-dark">
+        <a href="{% url 'home' %}?#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'home/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'home/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'home/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'home/js/creative.min.js' %}"></script>
+
+</body>
+
+</html>
