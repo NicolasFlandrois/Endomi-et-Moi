@@ -7,109 +7,104 @@
   <meta charset="utf-8">
   <meta name="author" content="Nicolas Flandrois">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Pur Beurre plateforme de substitution">
+  <meta name="description" content="Tracking tool for Endometriosis patients, non profit">
 
   {% if title %}
-      <title>Pur Beurre - {{ title }}</title>
+      <title>Endomi et moi - {{ title }}</title>
   {% else %}
-      <title>Pur Beurre</title>
+      <title>Endomi et moi</title>
   {% endif %}
-  <link rel="icon" type="image/png" href="{% static 'home/img/logo_pur_beurre-favicon.png' %}" />
 
-  <!-- Font Awesome Icons -->
-  <link href="{% static 'home/vendor/fontawesome-free/css/all.css' %}" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/png" href="https://www.endofrance.org/wp-content/uploads/2018/02/cropped-endofrance-favicon-32x32.jpg" />
 
-  <!-- Google Fonts -->
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'home/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-  <!-- Plugin CSS -->
-  <link href="{% static 'home/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
-
-  <!-- Theme CSS - Includes Bootstrap -->
-  <link href="{% static 'home/css/creative.css' %}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
 
 </head>
 
-<body id="page-top">
+<body>
 
-  <!-- Navigation -->
-  <nav class="container-fluid navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-    <!-- Left Side -->
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}" title="Accueil" alt="[LOGO]"><img src="{% static 'home/img/logo_pur_beurre.png' %}" alt="Pur Beurre Logo" height="50em;" width="auto"></a>
-      <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}" title="Accueil" alt="Pur Beurre">Pur Beurre</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <div class="d-flex" id="wrapper">
 
-
-      <!-- Right Side -->
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto my-2 my-lg-0">
-          <li class="nav-item">
-            <!-- Search a Product -->
-            <div class="container-fluid d-flex justify-content-center p-2 mr-3" >
-                <form class="form-inline" action="/snacks/search/" method="GET">
-                    <input type="text" name="search" class="form-control mb-2 mr-sm-2" placeholder="Produit à substituer" required="required" title="Produit à Substituer">
-                    <input type="submit" class="btn btn-secondary mb-2" value="chercher" title="Chercher">
-                </form>
-            </div>
-            <!-- End Search bar -->
-          </li>
-          {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'profile' %}" title="Mon Compte" alt="Mon Compte"><i style="font-size: 3em;" class="far fa-user" ></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'favourites' %}" title="Favoris" alt="Mes Favoris"><img src="{% static 'home/img/icon_carrot2.png' %}" height="50em" width="auto"></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}" title="Déconnexion" alt="Déconnexion"><i style="font-size: 3em;" class="fas fa-sign-out-alt"></i></a>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'login' %}" title="Connexion" alt="Connexion"><i style="font-size: 3em;" class="fas fa-sign-in-alt"></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'register' %}" title="Créer un Compte" alt="Créer un Compte"><i style="font-size: 3em;" class="far fa-plus-square"></i></a>
-            </li>
-          {% endif %}
-        </ul>
+    <!-- Sidebar -->
+    {% if user.is_authenticated %}
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">Mon Endomi</div>
+        <div class="list-group list-group-flush">
+          <a href="{% url 'profile' %}" class="list-group-item list-group-item-action bg-light" title="Mon Compte" alt="Mon Compte">Mon Compte</a>
+          <a href="{% url 'logout' %}" class="list-group-item list-group-item-action bg-light" title="Déconnexion" alt="Déconnexion">Déconnexion</a>
+          <a href="#" class="list-group-item list-group-item-action bg-light" title="Mon Suivi" alt="Mon Suivi">Mon suivi</a>
+          <a href="#" class="list-group-item list-group-item-action bg-light" title="Mes Graph" alt="Mes Graph">Mes Graph</a>
+        </div>
       </div>
+    {% else %}
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">Mon Endomi</div>
+        <div class="list-group list-group-flush">
+          <a href="{% url 'login' %}" class="list-group-item list-group-item-action bg-light" title="Connexion" alt="Connexion">Connexion</a>
+          <a href="{% url 'register' %}" class="list-group-item list-group-item-action bg-light" title="Créer un Compte" alt="Créer un Compte">Créer un compte</a>
+        </div>
+      </div>
+    {% endif %}
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      {% block title %}{% endblock %}
+
+      {% block content %}{% endblock %}
+
     </div>
-  </nav>
+    <!-- /#page-content-wrapper -->
 
-
-  {% block title %}{% endblock %}
-
-
-
-  {% block content %}{% endblock %}
-
-  <!-- Footer -->
-  <footer class="footer fixed-bottom bg-light">
-    <div class="container d-flex footer_block">
-      <div class="m-3 mx-auto small text-center text-gray-dark">
-        <a href="{% url 'legal' %}">Mentions Legales</a>
-      </div>
-      <div class="m-3 mx-auto small text-center text-gray-dark">Copyright &copy; 2019 - Nicolas Flandrois</div>
-      <div class="m-3 mx-auto small text-center text-gray-dark">
-        <a href="{% url 'home' %}?#contact">Contact</a>
-      </div>
-    </div>
-  </footer>
+  </div>
+  <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'home/vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-  <!-- Plugin JavaScript -->
-  <script src="{% static 'home/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-  <script src="{% static 'home/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="{% static 'home/js/creative.min.js' %}"></script>
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 
 </body>
 
