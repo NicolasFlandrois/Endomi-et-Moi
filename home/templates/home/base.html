@@ -23,6 +23,10 @@
   <!-- Custom styles for this template -->
   <link href="{% static 'home/css/simple-sidebar.css' %}" rel="stylesheet">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet" type="text/css">
+  <!-- <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css"> -->
+
 </head>
 
 <body>
@@ -31,22 +35,22 @@
 
   {% if user.is_authenticated %}
     <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="border-right" style="background-color: #f06072" id="sidebar-wrapper">
       <div class="sidebar-heading justify-content-center py-1">
         <a  href="{% url 'home' %}" title="Accueil" alt="Accueil Mon Endomi">Mon Endomi</a>
       </div>
         <div class="list-group list-group-flush">
             <!-- Subtitle Forms -->
             <h5 class="p-2">Mon Suivi</h5>
-            <a href="#" class="list-group-item list-group-item-action bg-light" title="Douleurs" alt="Douleurs">Douleurs</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light" title="Système digestif" alt="Système digestif">Système digestif</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light" title="Système digestif" alt="Système digestif">Système digestif</a>
+            <a href="#" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Douleurs" alt="Douleurs">Douleurs</a>
+            <a href="#" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Système digestif" alt="Système digestif">Système digestif</a>
+            <a href="#" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Système digestif" alt="Système digestif">Système digestif</a>
         </div>
-        <div class="list-group list-group-flush">
+        <div class="list-group list-group-flush" style="background-color: #f06072" >
             <!-- Subtitle Graphs -->
             <h5 class="p-2">Mes Graphs</h5>
-            <a href="#" class="list-group-item list-group-item-action bg-light" title="Mon Suivi" alt="Mon Suivi">Graph1</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light" title="Mes Graph" alt="Mes Graph">Graph2</a>
+            <a href="#" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Mon Suivi" alt="Mon Suivi">Graph1</a>
+            <a href="#" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Mes Graph" alt="Mes Graph">Graph2</a>
         </div>
       </div>
     <!-- /#sidebar-wrapper -->
@@ -56,7 +60,7 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-      <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light border-bottom py-1" id="mainNav">
+      <nav class="container-fluid navbar navbar-expand-lg navbar-light border-bottom py-1" style="background-color: #f06072" id="mainNav">
 
         {% if user.is_authenticated %}
         <button class="btn btn-primary" id="menu-toggle">Menu</button>
@@ -70,20 +74,20 @@
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
           {% if user.is_authenticated %}
             <li class="nav-item active">
-              <a href="{% url 'profile' %}" class="list-group-item list-group-item-action bg-light" title="Mon Compte" alt="Mon Compte">Mon Compte</a>
+              <a href="{% url 'profile' %}" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Mon Compte" alt="Mon Compte">Mon Compte</a>
             </li>
             <li class="nav-item active">
-              <a href="{% url 'logout' %}" class="list-group-item list-group-item-action bg-light" title="Déconnexion" alt="Déconnexion">Déconnexion</a>
+              <a href="{% url 'logout' %}" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Déconnexion" alt="Déconnexion">Déconnexion</a>
             </li>
           {% else %}
             <li class="nav-item">
               <a  class="nav-link" href="{% url 'home' %}" title="Accueil" alt="Accueil">Accueil</a>
             </li>
             <li class="nav-item active">
-              <a href="{% url 'login' %}" class="list-group-item list-group-item-action bg-light" title="Connexion" alt="Connexion">Connexion</a>
+              <a href="{% url 'login' %}" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Connexion" alt="Connexion">Connexion</a>
             </li>
             <li class="nav-item active">
-              <a href="{% url 'register' %}" class="flex-fill list-group-item list-group-item-action bg-light" title="Créer un Compte" alt="Créer un Compte">Créer un compte</a>
+              <a href="{% url 'register' %}" class="flex-fill list-group-item list-group-item-action" style="background-color: #f06072" title="Créer un Compte" alt="Créer un Compte">Créer un compte</a>
             </li>
           {% endif %}
             <li class="nav-item">
@@ -126,7 +130,7 @@
   <!-- /#wrapper -->
 
   <!-- Footer -->
-  <footer class="footer fixed-bottom bg-light">
+  <footer class="footer fixed-bottom" style="background-color: #f06072">
     <div class="container d-flex footer_block">
       <div class="m-3 mx-auto small text-center text-gray-dark">
         <a href="{% url 'legal' %}">Mentions Legales</a>
@@ -143,7 +147,7 @@
   <script src="{% static 'home/vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-  <!-- Menu Toggle Script -->
+  <!-- Menu/Sidebar Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
