@@ -29,40 +29,63 @@
 
   <div class="d-flex" id="wrapper">
 
+  {% if user.is_authenticated %}
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading justify-content-center py-1">
         <a  href="{% url 'home' %}" title="Accueil" alt="Accueil Mon Endomi">Mon Endomi</a>
       </div>
         <div class="list-group list-group-flush">
-          {% if user.is_authenticated %}
-            <a href="{% url 'profile' %}" class="list-group-item list-group-item-action bg-light" title="Mon Compte" alt="Mon Compte">Mon Compte</a>
-            <a href="{% url 'logout' %}" class="list-group-item list-group-item-action bg-light" title="Déconnexion" alt="Déconnexion">Déconnexion</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light" title="Mon Suivi" alt="Mon Suivi">Mon suivi</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light" title="Mes Graph" alt="Mes Graph">Mes Graph</a>
-          {% else %}
-            <a href="{% url 'login' %}" class="list-group-item list-group-item-action bg-light" title="Connexion" alt="Connexion">Connexion</a>
-            <a href="{% url 'register' %}" class="flex-fill list-group-item list-group-item-action bg-light" title="Créer un Compte" alt="Créer un Compte">Créer un compte</a>
-          {% endif %}
+            <!-- Subtitle Forms -->
+            <h5 class="p-2">Mon Suivi</h5>
+            <a href="#" class="list-group-item list-group-item-action bg-light" title="Douleurs" alt="Douleurs">Douleurs</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light" title="Système digestif" alt="Système digestif">Système digestif</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light" title="Système digestif" alt="Système digestif">Système digestif</a>
+        </div>
+        <div class="list-group list-group-flush">
+            <!-- Subtitle Graphs -->
+            <h5 class="p-2">Mes Graphs</h5>
+            <a href="#" class="list-group-item list-group-item-action bg-light" title="Mon Suivi" alt="Mon Suivi">Graph1</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light" title="Mes Graph" alt="Mes Graph">Graph2</a>
         </div>
       </div>
     <!-- /#sidebar-wrapper -->
+  {% else %}
+  {% endif %}
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
       <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light border-bottom py-1" id="mainNav">
-        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+        {% if user.is_authenticated %}
+        <button class="btn btn-primary" id="menu-toggle">Menu</button>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        {% endif %}
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          {% if user.is_authenticated %}
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}" title="Accueil" alt="Accueil Mon Endomi">Page d'Accueil <span class="sr-only">(current)</span></a>
+              <a href="{% url 'profile' %}" class="list-group-item list-group-item-action bg-light" title="Mon Compte" alt="Mon Compte">Mon Compte</a>
             </li>
+            <li class="nav-item active">
+              <a href="{% url 'logout' %}" class="list-group-item list-group-item-action bg-light" title="Déconnexion" alt="Déconnexion">Déconnexion</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a  class="nav-link" href="{% url 'home' %}" title="Accueil" alt="Accueil">Accueil</a>
+            </li>
+            <li class="nav-item active">
+              <a href="{% url 'login' %}" class="list-group-item list-group-item-action bg-light" title="Connexion" alt="Connexion">Connexion</a>
+            </li>
+            <li class="nav-item active">
+              <a href="{% url 'register' %}" class="flex-fill list-group-item list-group-item-action bg-light" title="Créer un Compte" alt="Créer un Compte">Créer un compte</a>
+            </li>
+          {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
