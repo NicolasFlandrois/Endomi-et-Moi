@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+# Author: Nicolas Flandrois
+# Date:   Tue 02 June 2020 15:07:47
+# Last Modified time: Tue 16 June 2020 14:40:28 
+
+# Description:
+
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 import os

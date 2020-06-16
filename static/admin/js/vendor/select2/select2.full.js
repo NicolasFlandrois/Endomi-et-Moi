@@ -1,3 +1,9 @@
+/*
+* @Author: Nicolas Flandrois
+* @Date:   Thu 11 June 2020 11:44:30
+* @Last Modified by:   Nicolas Flandrois
+* @Last Modified time: Tue 16 June 2020 14:27:38 
+*/
 /*!
  * Select2 4.0.7
  * https://select2.github.io
@@ -1480,7 +1486,7 @@ S2.define('select2/selection/base',[
       window.setTimeout(function () {
         self.$selection.focus();
       }, 0);
-    
+
       self._detachCloseHandler(container);
     });
 
@@ -1917,7 +1923,7 @@ S2.define('select2/selection/allowClear',[
       return;
     }
 
-    var removeAll = this.options.get('translations').get('removeAllItems');   
+    var removeAll = this.options.get('translations').get('removeAllItems');
 
     var $remove = $(
       '<span class="select2-selection__clear" title="' + removeAll() +'">' +

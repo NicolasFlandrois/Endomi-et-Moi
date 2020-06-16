@@ -1,4 +1,10 @@
-"""endomi URL Configuration
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# Author: Nicolas Flandrois
+# Date:   Tue 02 June 2020 23:14:52
+# Last Modified time: Tue 16 June 2020 15:05:21 
+
+"""Description:     endomi URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -50,6 +56,8 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(
              template_name='users/password_reset_complete.html'),
          name='password_reset_complete'),
+
+    path('trackers/', include('trackers.urls')),
 
     path('', include('home.urls')),
 ]

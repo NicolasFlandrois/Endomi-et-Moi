@@ -1,3 +1,9 @@
+/*
+* @Author: Nicolas Flandrois
+* @Date:   Thu 11 June 2020 11:44:30
+* @Last Modified by:   Nicolas Flandrois
+* @Last Modified time: Tue 16 June 2020 14:27:56 
+*/
 /*global DateTimeShortcuts, SelectFilter*/
 /**
  * Django admin inlines

@@ -1,3 +1,9 @@
+/*
+* @Author: Nicolas Flandrois
+* @Date:   Thu 11 June 2020 11:44:30
+* @Last Modified by:   Nicolas Flandrois
+* @Last Modified time: Tue 16 June 2020 14:28:15 
+*/
 /*global gettext, pgettext, get_format, quickElement, removeChildren*/
 /*
 calendar.js - Calendar functions by Adrian Holovaty

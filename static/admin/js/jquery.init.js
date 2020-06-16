@@ -1,3 +1,9 @@
+/*
+* @Author: Nicolas Flandrois
+* @Date:   Thu 11 June 2020 11:44:30
+* @Last Modified by:   Nicolas Flandrois
+* @Last Modified time: Tue 16 June 2020 14:28:18 
+*/
 /*global django:true, jQuery:false*/
 /* Puts the included jQuery into our own namespace using noConflict and passing
  * it 'true'. This ensures that the included jQuery doesn't pollute the global

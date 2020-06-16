@@ -1,3 +1,10 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# Author: Nicolas Flandrois
+# Date:   Tue 02 June 2020 15:28:13
+# Last Modified time: Tue 16 June 2020 14:39:06 
+
+# Description:
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from users.signals import create_profile, save_profile

@@ -1,3 +1,9 @@
+/*
+* @Author: Nicolas Flandrois
+* @Date:   Thu 11 June 2020 11:44:30
+* @Last Modified by:   Nicolas Flandrois
+* @Last Modified time: Tue 16 June 2020 14:28:13 
+*/
 /*global SelectBox, gettext, interpolate, quickElement, SelectFilter*/
 /*
 SelectFilter2 - Turns a multiple-select box into a filter interface.

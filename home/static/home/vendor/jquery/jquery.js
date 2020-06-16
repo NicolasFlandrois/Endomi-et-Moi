@@ -1,3 +1,9 @@
+/*
+* @Author: Nicolas Flandrois
+* @Date:   Tue 02 June 2020 23:02:03
+* @Last Modified by:   Nicolas Flandrois
+* @Last Modified time: Tue 16 June 2020 14:29:48 
+*/
 /*!
  * jQuery JavaScript Library v3.4.1
  * https://jquery.com/
