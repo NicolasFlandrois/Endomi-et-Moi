@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Fri 12 June 2020 15:28:34
-Last Modified time: Thu 18 June 2020 11:39:58 
+Last Modified time: Thu 18 June 2020 23:09:27 
 
  -->
 
@@ -37,6 +37,15 @@ Last Modified time: Thu 18 June 2020 11:39:58
 </header>
 
 <hr class="divider my-4">
+
+<!-- Alert Message, if any -->
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} ">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
 
 <!-- Text Body -->
 <div class="p-4">
