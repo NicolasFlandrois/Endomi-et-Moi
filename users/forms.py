@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 02 June 2020 23:51:13
-# Last Modified time: Tue 16 June 2020 22:09:55 
+# Last Modified time: Thu 18 June 2020 10:54:49 
 
 # Description:
 from django import forms

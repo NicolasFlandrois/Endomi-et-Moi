@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 02 June 2020 15:28:18
-# Last Modified time: Tue 16 June 2020 22:10:37 
+# Last Modified time: Thu 18 June 2020 16:47:19 
 
 # Description:
 from django.db import models
@@ -21,7 +21,7 @@ class Profile(models.Model):
     # to appear in profile e.g. Bio, City, langage, etc
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f'{self.user.username} Profile, Data for Science Agreement :\t{self.accord_de_don_des_données_à_la_recherche_médicale}'
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

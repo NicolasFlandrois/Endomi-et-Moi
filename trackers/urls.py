@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 15:06:12
-# Last Modified time: Tue 16 June 2020 15:20:08 
+# Last Modified time: Thu 18 June 2020 16:35:30
 
 # Description:
 # """django_blog URL Configuration
@@ -25,8 +25,8 @@ from django.urls import path
 from . import views as trackers_views
 
 urlpatterns = [
-    # path('trackers/',
-    #      trackers_views.TrackersListView.as_view(),
-    #      name='trackers'),
+    path('douleurs/',
+         trackers_views.pain_tracker,
+         name='douleurs'),
 
 ]

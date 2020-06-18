@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 02 June 2020 15:28:20
-# Last Modified time: Tue 16 June 2020 22:34:55 
+# Last Modified time: Thu 18 June 2020 10:54:55 
 
 # Description:
 from django.shortcuts import render, redirect

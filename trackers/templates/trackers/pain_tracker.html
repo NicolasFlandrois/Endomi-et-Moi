@@ -1,0 +1,53 @@
+<!--
+
+HTML5
+-*- coding: utf-8 -*-
+Author: Nicolas Flandrois
+Date:   Thu 18 June 2020 10:29:53
+Last Modified time: Thu 18 June 2020 16:43:14 
+
+ -->
+
+<!-- Description: -->
+{% extends "home/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} ">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+            <div class="content-section">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Enregistrer une Douleur</legend>
+                        <!-- {% for value, text in form.providers.field.choices %}
+                          <div class="ui slider checkbox">
+                            <input id="id_providers_{{ forloop.counter0 }}" name="{{ form.providers.name }}" type="checkbox" value="{{ value }}"{% if value in checked_providers %} checked="checked"{% endif %}>
+                            <label>{{ text }}</label>
+                          </div>
+                        {% endfor %} -->
+                        {{ form|crispy }}
+                        <!-- {{ form.as_p }} -->
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+
+          </div>
+    </div>
+  </main>
+
+{% endblock content %}
