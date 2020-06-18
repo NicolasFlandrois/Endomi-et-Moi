@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Fri 12 June 2020 15:31:50
-Last Modified time: Thu 18 June 2020 09:49:10 
+Last Modified time: Thu 18 June 2020 15:30:23 
 
  -->
 
@@ -62,7 +62,7 @@ through stats and graphs.
         <div class="list-group list-group-flush">
             <!-- Subtitle Forms -->
             <h5 class="p-2">Mon Suivi</h5>
-            <a href="#" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Douleurs" alt="Douleurs">Douleurs</a>
+            <a href="{% url 'douleurs' %}" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Douleurs" alt="Douleurs">Douleurs</a>
             <a href="#" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Système digestif" alt="Système digestif">Système digestif</a>
             <a href="#" class="list-group-item list-group-item-action" style="background-color: #f06072" title="Système digestif" alt="Système digestif">Système digestif</a>
         </div>
@@ -110,18 +110,17 @@ through stats and graphs.
               <a href="{% url 'register' %}" class="flex-fill list-group-item list-group-item-action" style="background-color: #f06072" title="Créer un Compte" alt="Créer un Compte">Créer un compte</a>
             </li>
           {% endif %}
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+                Liens Utiles
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="https://www.endofrance.org/" target="_blank" title="EndoFrance.org">EndoFrance.org</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" title="Accueil" href="{% url 'home' %}">Page d'accueil</a>
+                    <a class="dropdown-item" title="Contacts" href="{% url 'legal' %}?#contact">Contacts</a>
+                    <a class="dropdown-item" title="Mentions Légales" href="{% url 'legal' %}">Mentions Légales</a>
               </div>
             </li>
           </ul>
@@ -152,7 +151,7 @@ through stats and graphs.
   <footer class="footer fixed-bottom" style="background-color: #f06072">
     <div class="container d-flex footer_block">
       <div class="m-3 mx-auto small text-center text-gray-dark">
-        <a href="{% url 'legal' %}">Mentions Legales</a>
+        <a href="{% url 'legal' %}">Mentions Légales</a>
       </div>
       <div class="m-3 mx-auto small text-center text-gray-dark">Copyright &copy; 2020 - Nicolas Flandrois</div>
       <div class="m-3 mx-auto small text-center text-gray-dark">
