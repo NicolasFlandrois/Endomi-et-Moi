@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Thu 18 June 2020 10:55:12
-# Last Modified time: Thu 18 June 2020 17:33:18
+# Last Modified time: Thu 18 June 2020 22:20:47
 
 # Description:
 from django import forms
@@ -19,7 +19,7 @@ class PainTrackerForm(forms.Form):
         }
     ))
 
-    intensity_choices = forms.MultipleChoiceField(choices=[n[1] for n in PainSymptom.INTENSITY_CHOICE],
+    intensity_choices = forms.MultipleChoiceField(choices=[],
                                                   label='Intensité ?',
                                                   required=True,
                                                   widget=forms.Select(
@@ -28,7 +28,7 @@ class PainTrackerForm(forms.Form):
         }
     ))
 
-    location_choices = forms.MultipleChoiceField(choices=[n[1] for n in PainSymptom.LOC_CHOICE],
+    location_choices = forms.MultipleChoiceField(choices=[],
                                                  label='Localisation ?',
                                                  required=True,
                                                  widget=forms.CheckboxSelectMultiple(
@@ -56,7 +56,3 @@ class PainTrackerForm(forms.Form):
         self.fields['intensity_choices'].choices = [(n, n) for n in range(11)]
         self.fields['location_choices'].choices = [
             (loc, loc) for loc in unique_locations]
-
-   # class Meta:
-    #     model = PainSymptom
-    #     fields = ['time', 'intensity', 'location']
