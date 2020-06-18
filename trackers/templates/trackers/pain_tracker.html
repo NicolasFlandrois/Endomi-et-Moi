@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Thu 18 June 2020 10:29:53
-Last Modified time: Thu 18 June 2020 16:43:14 
+Last Modified time: Thu 18 June 2020 22:16:47 
 
  -->
 
@@ -30,15 +30,8 @@ Last Modified time: Thu 18 June 2020 16:43:14
                 <form method="POST">
                     {% csrf_token %}
                     <fieldset class="form-group">
-                        <legend class="border-bottom mb-4">Enregistrer une Douleur</legend>
-                        <!-- {% for value, text in form.providers.field.choices %}
-                          <div class="ui slider checkbox">
-                            <input id="id_providers_{{ forloop.counter0 }}" name="{{ form.providers.name }}" type="checkbox" value="{{ value }}"{% if value in checked_providers %} checked="checked"{% endif %}>
-                            <label>{{ text }}</label>
-                          </div>
-                        {% endfor %} -->
+                        <legend class="border-bottom mb-4">{{ title }}</legend>
                         {{ form|crispy }}
-                        <!-- {{ form.as_p }} -->
                     </fieldset>
                     <div class="form-group">
                         <button class="btn btn-outline-info" type="submit">Enregistrer</button>
