@@ -4,11 +4,19 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Fri 12 June 2020 15:31:50
-Last Modified time: Tue 16 June 2020 14:29:44 
+Last Modified time: Thu 18 June 2020 09:49:10 
 
  -->
 
-<!-- Descriion: -->
+<!--
+Description:
+"Mon Endomi et moi" is an open source project, and non profit.
+It came from the idea that endometriosis' symptoms may be influenced by
+external factors. This project tends/attempts to offer a tool for
+endometriosis patients,to track those potential factors, and identify them
+through stats and graphs.
+ -->
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="fr">
@@ -72,7 +80,7 @@ Last Modified time: Tue 16 June 2020 14:29:44
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-      <nav class="container-fluid navbar navbar-expand-lg navbar-light border-bottom py-1" style="background-color: #f06072" id="mainNav">
+      <nav class="container-fluid navbar sticky-top navbar-expand-lg navbar-light border-bottom py-1" style="background-color: #f06072" id="mainNav">
 
         {% if user.is_authenticated %}
         <button class="btn btn-primary" id="menu-toggle">Menu</button>
