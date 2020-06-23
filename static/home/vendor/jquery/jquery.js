@@ -1,8 +1,8 @@
 /*
 * @Author: Nicolas Flandrois
-* @Date:   Thu 11 June 2020 11:44:30
+* @Date:   Tue 02 June 2020 23:02:03
 * @Last Modified by:   Nicolas Flandrois
-* @Last Modified time: Tue 16 June 2020 14:26:02 
+* @Last Modified time: Tue 16 June 2020 14:29:48 
 */
 /*!
  * jQuery JavaScript Library v3.4.1

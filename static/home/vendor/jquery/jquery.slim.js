@@ -1,8 +1,8 @@
 /*
 * @Author: Nicolas Flandrois
-* @Date:   Thu 11 June 2020 11:44:30
+* @Date:   Tue 02 June 2020 23:02:03
 * @Last Modified by:   Nicolas Flandrois
-* @Last Modified time: Tue 16 June 2020 14:26:10 
+* @Last Modified time: Tue 16 June 2020 14:29:51 
 */
 /*!
  * jQuery JavaScript Library v3.4.1 -ajax,-ajax/jsonp,-ajax/load,-ajax/parseXML,-ajax/script,-ajax/var/location,-ajax/var/nonce,-ajax/var/rquery,-ajax/xhr,-manipulation/_evalUrl,-event/ajax,-effects,-effects/Tween,-effects/animatedSelector

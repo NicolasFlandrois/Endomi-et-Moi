@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Fri 12 June 2020 15:31:50
-Last Modified time: Thu 18 June 2020 15:30:23 
+Last Modified time: Mon 22 June 2020 14:48:51 
 
  -->
 
@@ -34,7 +34,7 @@ through stats and graphs.
       <title>Endomi et moi</title>
   {% endif %}
 
-  <link rel="icon" type="image/png" href="https://www.endofrance.org/wp-content/uploads/2018/02/cropped-endofrance-favicon-32x32.jpg" />
+  <link rel="icon" type="image/png" href="https://www.endofrance.org/wp-content/uploads/2018/02/cropped-endofrance-favicon-32x32.jpg">
 
   <!-- Bootstrap core CSS -->
   <link href="{% static 'home/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -43,8 +43,21 @@ through stats and graphs.
   <link href="{% static 'home/css/simple-sidebar.css' %}" rel="stylesheet">
 
   <!-- Google Fonts -->
-  <!-- <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet" type="text/css"> -->
-  <!-- <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=PT+Sans&display=swap" rel="stylesheet">
+  <!-- Font family 'Caveat' for testimonies -->
+  <!-- Font family 'PT Sans' for body -->
+
+  <style>
+
+    body{
+      font-family: 'PT Sans', sans-serif;
+    }
+
+    blockquote{
+      font-family: 'Caveat', cursive;
+      }
+
+  </style>
 
 </head>
 <!-- style="background-color: #f0e660" --> <!-- Jaune Endomi -->

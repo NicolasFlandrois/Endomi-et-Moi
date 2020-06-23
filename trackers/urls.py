@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 15:06:12
-# Last Modified time: Thu 18 June 2020 16:35:30
+# Last Modified time: Tue 23 June 2020 16:58:04 
 
 # Description:
 # """django_blog URL Configuration
