@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Thu 18 June 2020 10:55:12
-# Last Modified time: Tue 23 June 2020 23:07:00
+# Last Modified time: Tue 23 June 2020 23:50:18 
 
 # Description:
 from django.contrib import auth
@@ -13,7 +13,7 @@ TIME_SET = [
     'Matin',
     'Midi',
     'Après-Midi',
-    'Soire',
+    'Soir',
     'Nuit'
 ]
 
