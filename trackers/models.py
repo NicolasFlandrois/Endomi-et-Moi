@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:30
-# Last Modified time: Tue 23 June 2020 23:11:36
+# Last Modified time: Wed 24 June 2020 00:07:48 
 
 # Description:
 
@@ -13,7 +13,11 @@ from datetime import date
 
 
 class PainLocConstants(models.Model):
-    """PainLocation is a single répertoire of all pain locations"""
+    """
+    PainLocation is a single répertoire of all pain locations.
+        Loc defines the Location's name.
+        Show defines if we show this option to the public users.
+    """
     id = models.AutoField(primary_key=True)
     loc = models.CharField(max_length=20)
     show = models.BooleanField(null=False, default=False)
@@ -26,6 +30,7 @@ class PainLocConstants(models.Model):
 class PainSymptom(models.Model):
     """docstring for PainSymptom"""
     locs = PainLocConstants.objects.all().filter(show=True).order_by('loc')
+    # Fetch all choices option from PainLocConstants, only those show=True
 
     id = models.AutoField(primary_key=True)
     date_added = models.DateTimeField(default=timezone.now)
@@ -62,9 +67,16 @@ Location: {self.location}, \
 Intensity: {self.intensity}, \
 Date: {self.date_added}"
 
-    def save(self, other_loc):
-        locations = other_loc.split(',')
+    def save(self):
+        """
+        save()
+        This function saves the instance object to the database.
+        Here I modified it, so if new locations are detected
+        from 'Other Locations', it could save those new location in our
+        constants location table.
+        """
+        locations = self.other_loc.split(',')
         for location in locations:
-            new_loc = PainLocConstants(loc=location,
+            new_loc = PainLocConstants(loc=location.Title(),
                                        show=False)
             new_loc.save()
