@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:42
-# Last Modified time: Tue 23 June 2020 23:37:26
+# Last Modified time: Tue 23 June 2020 23:50:48
 
 # Description:
 
@@ -24,7 +24,7 @@ def pain_tracker(request):
         print('pouloulou 3', [
               n if '_post' in n else None for n in request.__dict__.items()])
 
-        if form.is_valid():
+        if form.is_valid():  # Issue is here... data doesn't pass through form validation
 
             print('pouloulou 4 - valid form')
             p_new = PainSymptom(instance=request.user)
