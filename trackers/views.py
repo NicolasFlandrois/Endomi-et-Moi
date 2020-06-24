@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:42
-# Last Modified time: Wed 24 June 2020 00:08:59
+# Last Modified time: Wed 24 June 2020 15:02:07
 
 # Description:
 
@@ -27,20 +27,21 @@ def pain_tracker(request):
         if form.is_valid():  # Issue is here... data doesn't pass through form validation
 
             print('pouloulou 4 - valid form')
-            p_new = PainSymptom(instance=request.user)
-            p_new.user = auth.get_user(request)
-            tmp_date_day = form.cleaned_data['date_day']
-            p_new.date_day = tmp_date_day if tmp_date_day is True else date.today()
-            p_new.time_of_day = form.cleaned_data['time_of_day']
-            p_new.intensity = form.cleaned_data['intensity']
-            p_new.location = form.cleaned_data['location']
-            p_new.other_loc = form.cleaned_data['other_loc']
+            # p_new = PainSymptom(instance=request.user)
+            # p_new.user = auth.get_user(request)
+            # tmp_date_day = form.cleaned_data['date_day']
+            # p_new.date_day = tmp_date_day if tmp_date_day is True else date.today()
+            # p_new.time_of_day = form.cleaned_data['time_of_day']
+            # p_new.intensity = form.cleaned_data['intensity']
+            # p_new.location = form.cleaned_data['location']
+            # p_new.other_loc = form.cleaned_data['other_loc']
 
-            print('pouloulou 5', p_new)
+            # print('pouloulou 5', p_new)
 
-            p_new.save(other_loc=p_new.other_loc)
+            # p_new.save(other_loc=p_new.other_loc)
 
             print('pouloulou 6')
+            form.save(commit=True)
 
             messages.success(
                 request, 'Votre suivi Douleur a bien été enregistré')
