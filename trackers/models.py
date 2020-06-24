@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:30
-# Last Modified time: Wed 24 June 2020 15:36:51
+# Last Modified time: Wed 24 June 2020 17:24:53 
 
 # Description:
 
@@ -34,11 +34,11 @@ class PainSymptom(models.Model):
 
     id = models.AutoField(primary_key=True)
     date_added = models.DateTimeField(default=timezone.now)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_day = models.DateField(
         'Quand est apparue la douleur ?',
         default=date.today, null=True,
-        help_text="Veuillez rentrer la date au format: <em>AAAA-MM-JJ</em>.")
+        help_text="Veuillez rentrer la date au format: <em>JJ/MM/AAAA</em>.")
     time_of_day = models.CharField('Quel temps dans la journée ?',
                                    max_length=10,
                                    null=True)
@@ -57,7 +57,8 @@ class PainSymptom(models.Model):
     other_loc = models.CharField('La douleur est-elle à un autre endroit?',
                                  max_length=20,
                                  default='_Aucune',
-                                 null=True
+                                 null=True,
+        help_text="Si plusieurs nouvelles localisations, séparez avec une <em>virgule</em)."
                                  )
 
     def __str__(self):
@@ -67,7 +68,7 @@ Location: {self.location}, \
 Intensity: {self.intensity}, \
 Date: {self.date_added}"
 
-    def save(self):
+    def save(self, *args, **kwargs):
         """
         save()
         This function saves the instance object to the database.
@@ -75,8 +76,13 @@ Date: {self.date_added}"
         from 'Other Locations', it could save those new location in our
         constants location table.
         """
+        super().save(*args, **kwargs)
         locations = self.other_loc.split(',')
         for location in locations:
-            new_loc = PainLocConstants(loc=location.Title(),
-                                       show=False)
-            new_loc.save()
+            location = location.strip().title()
+            if PainLocConstants.objects.filter(loc=location).exists():
+                pass
+            else:
+                new_loc = PainLocConstants(loc=location,
+                                           show=False)
+                new_loc.save()

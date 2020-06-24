@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Thu 18 June 2020 10:55:12
-# Last Modified time: Wed 24 June 2020 15:37:52
+# Last Modified time: Wed 24 June 2020 17:18:17
 
 # Description:
 from django.contrib import auth
@@ -19,32 +19,16 @@ TIME_SET = [
 
 
 class PainTrackerForm(forms.ModelForm):
-    # date_day = forms.MultipleChoiceField(choices=[],
-    #                                      label='Quand est-elle apparue ?',
-    #                                      required=False,
-    #                                      widget=forms.SelectDateWidget(
-    #     attrs={
-    #         'class': 'form-control',
-    #     }
-    # ))
+    '''PainTrackerForm Docstring'''
 
     time_of_day = forms.MultipleChoiceField(choices=[(n, n) for n in TIME_SET],
                                             label='A quel moment dans la journée ?',
                                             required=True,
-                                            widget=forms.CheckboxSelectMultiple(
+                                            widget=forms.RadioSelect(
         attrs={
             'class': 'form-control',
         }
     ))
-
-    # other_loc = forms.CharField(label='La douleur est-elle à un autre endroit?',
-    #                             max_length=100,
-    #                             required=False,
-    #                             widget=forms.TextInput(
-    #                                 attrs={
-    #                                     'class': 'form-control',
-    #                                 }
-    #                             ))
 
     class Meta:
         model = PainSymptom
