@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Thu 18 June 2020 10:55:12
-# Last Modified time: Wed 24 June 2020 17:18:17
+# Last Modified time: Wed 24 June 2020 23:00:29 
 
 # Description:
 from django.contrib import auth

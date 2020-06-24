@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:42
-# Last Modified time: Wed 24 June 2020 17:26:11 
+# Last Modified time: Wed 24 June 2020 23:00:49 
 
 # Description:
 
@@ -26,11 +26,10 @@ def pain_tracker(request):
             instance.time_of_day = request.POST.get('time_of_day')
             instance.intensity = request.POST.get('intensity')
             instance.location = request.POST.get('location')
-            instance.other_loc = request.POST.get('other_loc').title()
+            instance.other_loc = request.POST.get('other_loc').lower()
             instance.save()
             messages.success(request, 'Vos réponses ont bien été enregistrés')
             return redirect('home')
-            # Revoir la gestion des données vides... si Formulaire vide ou case manquante
         except Exception as e:
             print(e)
             messages.warning(request, 'Vos réponses n\'ont pas été enregstrés')
