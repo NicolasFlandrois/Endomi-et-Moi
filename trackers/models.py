@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:30
-# Last Modified time: Thu 25 June 2020 14:19:30
+# Last Modified time: Thu 25 June 2020 14:29:09
 
 # Description:
 
@@ -136,7 +136,8 @@ class PainSymptom(models.Model):
         help_text="Veuillez rentrer la date au format: <em>JJ/MM/AAAA</em>.")
     time_of_day = models.CharField('Quel temps dans la journée ?',
                                    default='Null',
-                                   max_length=10,
+                                   max_length=40,
+                                   help_text='(Plusieurs choix possibles)',
                                    null=False)
     intensity = models.CharField('Quel est sont intensité ?',
                                  max_length=2,
@@ -204,6 +205,7 @@ class SysDigest(models.Model):
                             default='Null',
                             max_length=200,
                             null=True,
+                            help_text='(Plusieurs choix possibles)',
                             choices=[
                                 (food.name.title(), food.name.title()) for food in foods]
                             )

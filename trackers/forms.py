@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Thu 18 June 2020 10:55:12
-# Last Modified time: Thu 25 June 2020 14:20:02
+# Last Modified time: Thu 25 June 2020 14:29:36
 
 # Description:
 from django.contrib import auth
@@ -24,7 +24,7 @@ class PainTrackerForm(forms.ModelForm):
     time_of_day = forms.MultipleChoiceField(choices=[(n, n) for n in TIME_SET],
                                             label='A quel moment dans la journée ?',
                                             required=True,
-                                            widget=forms.RadioSelect(
+                                            widget=forms.CheckboxSelectMultiple(
         attrs={
             'class': 'form-control',
         }

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:42
-# Last Modified time: Thu 25 June 2020 14:20:50
+# Last Modified time: Thu 25 June 2020 14:33:27
 
 # Description:
 
@@ -23,7 +23,10 @@ def pain_tracker(request):
             instance.user = auth.get_user(request)
             tmp_date_day = request.POST.get('date_day')
             instance.date_day = datetime.strptime(tmp_date_day, "%d/%m/%Y")
-            instance.time_of_day = request.POST.get('time_of_day')
+
+            req = dict(request.POST)
+            instance.time_of_day = ', '.join(req['time_of_day'])
+
             instance.intensity = request.POST.get('intensity')
             instance.location = request.POST.get('location')
             instance.other_loc = request.POST.get('other_loc').lower()
@@ -51,8 +54,8 @@ def digest_tracker(request):
             instance.user = auth.get_user(request)
 
             req = dict(request.POST)
-
             instance.food = ', '.join(req['food'])
+
             instance.meal = request.POST.get('meal')
             instance.nb_meal = request.POST.get('nb_meal')
             instance.digest = request.POST.get('digest')
