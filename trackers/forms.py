@@ -2,26 +2,21 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Thu 18 June 2020 10:55:12
-# Last Modified time: Thu 25 June 2020 14:29:36
+# Last Modified time: Thu 25 June 2020 16:02:24
 
 # Description:
 from django.contrib import auth
 from django import forms
 from .models import *
 
-TIME_SET = [
-    'Matin',
-    'Midi',
-    'Après-Midi',
-    'Soir',
-    'Nuit'
-]
-
 
 class PainTrackerForm(forms.ModelForm):
     '''PainTrackerForm Docstring'''
 
-    time_of_day = forms.MultipleChoiceField(choices=[(n, n) for n in TIME_SET],
+    TIME_SET = Constants.objects.all().filter(
+        cat='dtime', show=True)
+
+    time_of_day = forms.MultipleChoiceField(choices=[(n.name.title(), n.name.title()) for n in TIME_SET],
                                             label='A quel moment dans la journée ?',
                                             required=True,
                                             widget=forms.CheckboxSelectMultiple(

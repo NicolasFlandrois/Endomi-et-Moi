@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:30
-# Last Modified time: Thu 25 June 2020 14:29:09
+# Last Modified time: Thu 25 June 2020 16:00:26
 
 # Description:
 
@@ -10,7 +10,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from datetime import date
-from multiselectfield import MultiSelectField
+import json
 
 
 class Constants(models.Model):
@@ -26,92 +26,20 @@ class Constants(models.Model):
 
     def __str__(self):
         """__str__ display when calling the object in consol"""
-        return f"Pain Location choices: {self.loc} | Show to users: {self.show}"
+        return f"Category: {self.cat} | Name: {self.name} | Show to users: {self.show}"
 
-    def init_populate(self, *args, **kwargs):
+    def populate(self, *args, **kwargs):
         '''
         This functionn called in shell,
         with `python manage.py shell` command,
         will allow to populate constants table, for the initial setup
         '''
-        # Constants for Pain Locations for PainSymptom class
-        loc_lombaire = Constants.objects.get_or_create(
-            cat='loc', name='lombaire', show=True)
-        loc_abdominale = Constants.objects.get_or_create(
-            cat='loc', name='abdominale', show=True)
-        loc_intra_uterine = Constants.objects.get_or_create(
-            cat='loc', name='intra-utérine', show=True)
-        loc_intestinale = Constants.objects.get_or_create(
-            cat='loc', name='intestinale', show=True)
-        loc_digestive = Constants.objects.get_or_create(
-            cat='loc', name='digestive', show=True)
-        loc_plexus = Constants.objects.get_or_create(
-            cat='loc', name='plexus', show=True)
-        loc_aucun = Constants.objects.get_or_create(
-            cat='loc', name='_aucun', show=True)
-        loc_autres = Constants.objects.get_or_create(
-            cat='loc', name='_autres', show=True)
-        # Constants for Food for SysDigest class
-        food_sucre = Constants.objects.get_or_create(
-            cat='food', name='sucre', show=True)
-        food_caféine = Constants.objects.get_or_create(
-            cat='food', name='caféine', show=True)
-        food_théine = Constants.objects.get_or_create(
-            cat='food', name='théine', show=True)
-        food_gluten = Constants.objects.get_or_create(
-            cat='food', name='gluten', show=True)
-        food_fruits = Constants.objects.get_or_create(
-            cat='food', name='fruits', show=True)
-        food_légumes = Constants.objects.get_or_create(
-            cat='food', name='légumes', show=True)
-        food_céréales = Constants.objects.get_or_create(
-            cat='food', name='céréales', show=True)
-        food_légumineuse = Constants.objects.get_or_create(
-            cat='food', name='légumineuse', show=True)
-        food_lactose = Constants.objects.get_or_create(
-            cat='food', name='lactose', show=True)
-        food_lait_veg = Constants.objects.get_or_create(
-            cat='food', name='lait végétal', show=True)
-        food_viande_rouge = Constants.objects.get_or_create(
-            cat='food', name='viande rouge', show=True)
-        food_viande_blanche = Constants.objects.get_or_create(
-            cat='food', name='viande blanche', show=True)
-        food_poisson = Constants.objects.get_or_create(
-            cat='food', name='poisson', show=True)
-        food_epicé = Constants.objects.get_or_create(
-            cat='food', name='epicé', show=True)
-        food_gras = Constants.objects.get_or_create(
-            cat='food', name='gras', show=True)
-        food_aucun = Constants.objects.get_or_create(
-            cat='food', name='_aucun', show=True)
-        food_autres = Constants.objects.get_or_create(
-            cat='food', name='_autres', show=True)
-        # Constants for Digestion for SysDigest class
-        digest_normal = Constants.objects.get_or_create(
-            cat='digest', name='normal', show=True)
-        digest_crampes = Constants.objects.get_or_create(
-            cat='digest', name='crampes', show=True)
-        digest_gaz = Constants.objects.get_or_create(
-            cat='digest', name='gaz', show=True)
-        digest_faim = Constants.objects.get_or_create(
-            cat='digest', name='sensation de faim', show=True)
-        digest_aucun = Constants.objects.get_or_create(
-            cat='digest', name='_aucun', show=True)
-        digest_autres = Constants.objects.get_or_create(
-            cat='digest', name='_autres', show=True)
-        # Constants for Transit for SysDigest class
-        transit_normal = Constants.objects.get_or_create(
-            cat='transit', name='normal', show=True)
-        transit_diarrhée = Constants.objects.get_or_create(
-            cat='transit', name='diarrhée', show=True)
-        transit_constipation = Constants.objects.get_or_create(
-            cat='transit', name='constipation', show=True)
-        transit_hémorroïdes = Constants.objects.get_or_create(
-            cat='transit', name='hémorroïdes', show=True)
-        transit_aucun = Constants.objects.get_or_create(
-            cat='transit', name='_aucun', show=True)
-        transit_autres = Constants.objects.get_or_create(
-            cat='transit', name='_autres', show=True)
+        with open('constants.json') as f:
+            constants = json.load(f)
+
+            for constant in constants:
+                Constants.objects.get_or_create(
+                    cat=constant['cat'], name=constant['name'], show=True)
 
 
 class PainSymptom(models.Model):
