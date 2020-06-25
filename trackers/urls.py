@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 15:06:12
-# Last Modified time: Tue 23 June 2020 16:58:04 
+# Last Modified time: Thu 25 June 2020 12:13:42 
 
 # Description:
 # """django_blog URL Configuration
@@ -28,5 +28,8 @@ urlpatterns = [
     path('douleurs/',
          trackers_views.pain_tracker,
          name='douleurs'),
+    path('digestif/',
+         trackers_views.digest_tracker,
+         name='digestif'),
 
 ]
