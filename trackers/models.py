@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:30
-# Last Modified time: Thu 25 June 2020 16:00:26
+# Last Modified time: Thu 25 June 2020 16:33:31 
 
 # Description:
 
@@ -11,6 +11,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from datetime import date
 import json
+from multiselectfield import MultiSelectField
 
 
 class Constants(models.Model):
@@ -50,8 +51,10 @@ class PainSymptom(models.Model):
     by specifying the date (in date_day),
     and the time/period during that day (in time_of_day)
     """
-    locs = Constants.objects.all().filter(
+    LOCS = Constants.objects.all().filter(
         cat='loc', show=True).order_by('-name')
+    TIME_SET = Constants.objects.all().filter(
+        cat='dtime', show=True)
     # locs = []  # Activate this variable when applying new migrations
     # Fetch all choices option from Constants, only those show=True
 
@@ -62,10 +65,12 @@ class PainSymptom(models.Model):
         'Quand est apparue la douleur ?',
         default=date.today, null=False,
         help_text="Veuillez rentrer la date au format: <em>JJ/MM/AAAA</em>.")
-    time_of_day = models.CharField('Quel temps dans la journée ?',
+    time_of_day = MultiSelectField('Quel temps dans la journée ?',
                                    default='Null',
                                    max_length=40,
                                    help_text='(Plusieurs choix possibles)',
+                                   choices=[(n.name.title(), n.name.title())
+                                            for n in TIME_SET],
                                    null=False)
     intensity = models.CharField('Quel est sont intensité ?',
                                  max_length=2,
@@ -77,7 +82,8 @@ class PainSymptom(models.Model):
                                 default='_Aucune',
                                 null=False,
                                 choices=[
-                                    (location.name.title(), location.name.title()) for location in locs]
+                                    (location.name.title(), location.name.title())
+                                    for location in LOCS]
                                 )
     other_loc = models.CharField('La douleur est-elle à un autre endroit?',
                                  max_length=20,
@@ -129,7 +135,7 @@ class SysDigest(models.Model):
     id = models.AutoField(primary_key=True)
     date_added = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    food = models.CharField('Quel type de nourriture ?',
+    food = MultiSelectField('Quel type de nourriture ?',
                             default='Null',
                             max_length=200,
                             null=True,
