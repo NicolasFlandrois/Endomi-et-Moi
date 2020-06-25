@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:30
-# Last Modified time: Thu 25 June 2020 12:43:00 
+# Last Modified time: Thu 25 June 2020 14:19:30
 
 # Description:
 
@@ -10,6 +10,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from datetime import date
+from multiselectfield import MultiSelectField
 
 
 class Constants(models.Model):
@@ -201,10 +202,10 @@ class SysDigest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     food = models.CharField('Quel type de nourriture ?',
                             default='Null',
-                            max_length=50,
+                            max_length=200,
                             null=True,
                             choices=[
-                                    (food.name.title(), food.name.title()) for food in foods]
+                                (food.name.title(), food.name.title()) for food in foods]
                             )
 
     meal = models.CharField('Quel type de repas ?',

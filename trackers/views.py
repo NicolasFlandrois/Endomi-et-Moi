@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:42
-# Last Modified time: Thu 25 June 2020 12:43:06 
+# Last Modified time: Thu 25 June 2020 14:20:50
 
 # Description:
 
@@ -47,14 +47,12 @@ def pain_tracker(request):
 def digest_tracker(request):
     if request.method == 'POST':
         try:
-            print(request.POST)
             instance = SysDigest()
             instance.user = auth.get_user(request)
 
-            # tmp_date_day = request.POST.get('date_day')
-            # instance.date_day = datetime.strptime(tmp_date_day, "%d/%m/%Y")
+            req = dict(request.POST)
 
-            instance.food = request.POST.get('food')
+            instance.food = ', '.join(req['food'])
             instance.meal = request.POST.get('meal')
             instance.nb_meal = request.POST.get('nb_meal')
             instance.digest = request.POST.get('digest')
