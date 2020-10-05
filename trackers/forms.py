@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Thu 18 June 2020 10:55:12
-# Last Modified time: Thu 25 June 2020 16:38:22
+# Last Modified time: Thu 25 June 2020 16:56:13 
 
 # Description: Managing all forms for Trackers App,
 # and what fields will be displayed to the user.
