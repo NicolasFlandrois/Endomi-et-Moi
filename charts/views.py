@@ -1,15 +1,13 @@
+from django.contrib import auth
 from django.shortcuts import render
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
-# from django.db import connection
-# import pandas as pd
-
+import pandas as pd
 from trackers.models import PainSymptom
-from django_pandas.io import read_frame
+from django.conf import settings
+from sqlalchemy import create_engine
 
 
 class ChartView(View):
@@ -21,17 +19,35 @@ class ChartData(LoginRequiredMixin, UserPassesTestMixin, APIView):
     authentication_classes = []
     permission_classes = []
 
-    def get(self, request, format=None):
-        pain_qs = PainSymptom.objects.filter(
-            user=self.request.user).order_by('-date_added')
+    def connect(self):
+        """Connect Python to the MySQL database with: 'name variable' """
 
-        pain_df = read_frame(pain_qs)
-        print(pain_df)
-        labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
-        default_items = [120, 130, 140, 150, 160, 170]
+        username = settings.DATABASES['default']['USER']
+        password = settings.DATABASES['default']['PASSWORD']
+        database_name = settings.DATABASES['default']['NAME']
+        host = settings.DATABASES['default']['HOST']
+        port = settings.DATABASES['default']['PORT']
+
+        engine = create_engine(
+            f'mysql+pymysql://{username}:{password}@{host}/\
+{database_name}?host={host}?port={port}',
+            echo=False, encoding='utf8', pool_recycle=60000,
+            pool_pre_ping=True)
+
+        return engine
+
+    def get(self, request, format=None):
+        pain_qs = PainSymptom.objects.all()
+        user = auth.get_user(request)
+        engine = self.connect()
+
+        all_pain_df = pd.read_sql('trackers_painsymptom', engine)
+        user_pain_df = all_pain_df[(all_pain_df.user_id == user.id)]
+
         data = {
-            'labels': labels,
-            'default': default_items
+            'intensity_x': user_pain_df['date_day'].values.tolist(),
+            'intensity_y': user_pain_df['intensity'].values.tolist(),
+            'location_doughnut': user_pain_df['location'].value_counts(ascending=True)
         }
 
         return Response(data)

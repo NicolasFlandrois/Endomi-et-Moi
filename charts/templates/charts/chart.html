@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Wed 07 October 2020 16:50:14
-Last Modified time: Wed 07 October 2020 18:49:09 
+Last Modified time: Thu 08 October 2020 00:42:27 
 
  -->
 
@@ -15,52 +15,42 @@ Last Modified time: Wed 07 October 2020 18:49:09
 {% block jquery %}
 
 var endpoint = '/graphs/api/chart/data/'
-var defaultData = []
-var labels = []
+var intensity_x = []
+var intensity_y = []
+var location_doughnut = []
 $.ajax({
     method:"GET",
     url: endpoint,
     success: function(data){
-        labels = data.labels
-        defaultData = data.default
+        intensity_x = data.intensity_x
+        intensity_y = data.intensity_y
+        location_doughnut = data.location_doughnut
         var ctx = document.getElementById('myChart')
+        var ctx_doughnut = document.getElementById('myDoughnutChart')
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: labels,
+                labels: intensity_x,
                 datasets: [{
-                    label: '# of Votes',
-                    data: defaultData,
-
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+                    label: 'Intensité de la douleur',
+                    data: intensity_y,
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                }]
+            }
+        });
+        var myDoughnutChart = new Chart(ctx_doughnut, {
+            type: 'doughnut',
+            data: location_doughnut,
+            options:
+        });
 
     },
     error: function(error_data){
@@ -77,8 +67,12 @@ $.ajax({
   <div class="row">
       <div class="col-12">
         <h1>Your Chart</h1>
-        <canvas id="myChart" width="400" height="400"></canvas>
-
+        <div class="col-sm-6">
+            <canvas id="myChart" width="200" height="auto"></canvas>
+        </div>
+        <div class="col-sm-6">
+            <canvas id="myDoughnutChart" width="200" height="auto"></canvas>
+        </div>
       </div>
   </div>
   <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
