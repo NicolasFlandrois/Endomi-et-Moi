@@ -47,7 +47,6 @@ class ChartData(LoginRequiredMixin, UserPassesTestMixin, APIView):
         data = {
             'intensity_x': user_pain_df['date_day'].values.tolist(),
             'intensity_y': user_pain_df['intensity'].values.tolist(),
-            'location_doughnut': user_pain_df['location'].value_counts(ascending=True)
         }
 
         return Response(data)

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 02 June 2020 23:39:06
-# Last Modified time: Wed 07 October 2020 22:06:45 
+# Last Modified time: Thu 08 October 2020 00:49:36 
 
 """
 Description:
@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'crispy_forms',
     'rest_framework',
-    'django_pandas.io',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Wed 07 October 2020 16:50:14
-Last Modified time: Thu 08 October 2020 00:42:27 
+Last Modified time: Thu 08 October 2020 00:47:08 
 
  -->
 
@@ -17,16 +17,13 @@ Last Modified time: Thu 08 October 2020 00:42:27
 var endpoint = '/graphs/api/chart/data/'
 var intensity_x = []
 var intensity_y = []
-var location_doughnut = []
 $.ajax({
     method:"GET",
     url: endpoint,
     success: function(data){
         intensity_x = data.intensity_x
         intensity_y = data.intensity_y
-        location_doughnut = data.location_doughnut
         var ctx = document.getElementById('myChart')
-        var ctx_doughnut = document.getElementById('myDoughnutChart')
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -46,11 +43,6 @@ $.ajax({
                 }]
             }
         });
-        var myDoughnutChart = new Chart(ctx_doughnut, {
-            type: 'doughnut',
-            data: location_doughnut,
-            options:
-        });
 
     },
     error: function(error_data){
@@ -65,13 +57,10 @@ $.ajax({
 {% block content %}
   <!-- Your Chart Here -->
   <div class="row">
-      <div class="col-12">
-        <h1>Your Chart</h1>
-        <div class="col-sm-6">
-            <canvas id="myChart" width="200" height="auto"></canvas>
-        </div>
-        <div class="col-sm-6">
-            <canvas id="myDoughnutChart" width="200" height="auto"></canvas>
+      <div class="m-4 col-12">
+        <h1>Intensité de la Douleur dans le temps</h1>
+        <div>
+            <canvas id="myChart" width="400" height="auto"></canvas>
         </div>
       </div>
   </div>
