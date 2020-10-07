@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 02 June 2020 23:14:52
-# Last Modified time: Thu 18 June 2020 15:45:14 
+# Last Modified time: Wed 07 October 2020 16:53:27 
 
 """Description:     endomi URL Configuration
 
@@ -58,6 +58,8 @@ urlpatterns = [
          name='password_reset_complete'),
 
     path('suivi/', include('trackers.urls')),
+
+    path('graphs/', include('charts.urls')),
 
     path('', include('home.urls')),
 ]

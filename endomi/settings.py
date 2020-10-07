@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 02 June 2020 23:39:06
-# Last Modified time: Fri 07 August 2020 09:15:42 
+# Last Modified time: Wed 07 October 2020 16:52:52 
 
 """
 Description:
@@ -45,6 +45,7 @@ ALLOWED_HOSTS = []  # Update Here!
 # Application definition
 
 INSTALLED_APPS = [
+    'charts.apps.ChartsConfig',
     'trackers.apps.TrackersConfig',
     'users.apps.UsersConfig',
     'home.apps.HomeConfig',
