@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Fri 12 June 2020 15:31:50
-Last Modified time: Wed 07 October 2020 16:57:07 
+Last Modified time: Wed 07 October 2020 18:23:00 
 
  -->
 
@@ -188,12 +188,22 @@ through stats and graphs.
   <script src="{% static 'home/vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
+  <!-- Chart.JS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+
   <!-- Menu/Sidebar Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
+  </script>
+
+  <!-- Jquery Block -->
+  <script>
+    $(document).ready(function(){
+      {% block jquery %}{% endblock %}
+    })
   </script>
 
 </body>

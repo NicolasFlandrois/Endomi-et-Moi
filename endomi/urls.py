@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 02 June 2020 23:14:52
-# Last Modified time: Wed 07 October 2020 16:53:27 
+# Last Modified time: Wed 07 October 2020 17:40:40 
 
 """Description:     endomi URL Configuration
 
@@ -28,6 +28,7 @@ from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
 
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),
