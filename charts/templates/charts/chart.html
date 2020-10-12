@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Wed 07 October 2020 16:50:14
-Last Modified time: Mon 12 October 2020 14:31:22 
+Last Modified time: Mon 12 October 2020 14:33:02 
 
  -->
 
@@ -48,9 +48,8 @@ $.ajax({
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                  labels: timestamps
-                            .map(t => t.toLocaleString([], { month: '2-digit', day: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })),
-                  datasets: [{
+                labels: intensity_x,
+                datasets: [{
                     label: 'Intensité de la douleur',
                     data: intensity_y,
                     borderColor: '#F06072',
