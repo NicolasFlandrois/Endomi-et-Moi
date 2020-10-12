@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Wed 07 October 2020 16:50:14
-Last Modified time: Mon 12 October 2020 17:54:34 
+Last Modified time: Mon 12 October 2020 17:59:06 
 
  -->
 
@@ -45,18 +45,7 @@ $.ajax({
     success: function(data){
         timestamp = data.timestamp;
         intensity_y = data.intensity_y;
-        /*console.log(timestamp);
 
-        var new_timestamp = [];
-        for (time in timestamp){
-            var tmp_date = new Date(time);
-            console.log(tmp_date);
-            /*var tmp_date_2 =  tmp_date.toLocaleString();*/
-            /*console.log(tmp_date_2)*/
-            /*new_timestamp.push(tmp_date);
-
-        };
-        console.log(new_timestamp);*/
         var ctx = document.getElementById('myChart')
         var myChart = new Chart(ctx, {
             type: 'bar',

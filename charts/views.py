@@ -8,7 +8,6 @@ import pandas as pd
 from trackers.models import PainSymptom
 from django.conf import settings
 from sqlalchemy import create_engine
-from datetime import datetime
 
 
 class ChartView(View):
@@ -47,19 +46,8 @@ class ChartData(LoginRequiredMixin, UserPassesTestMixin, APIView):
 
         tmp_date_df = pd.DataFrame()
         tmp_date_df['Date'] = user_pain_df['date_day']
-        # df['year'] = pd.DatetimeIndex(user_pain_df['date_day']).year
-        # df['month'] = pd.DatetimeIndex(user_pain_df['date_day']).month
-        # df['day'] = pd.DatetimeIndex(user_pain_df['date_day']).day
         tmp_date_df['date_str'] = tmp_date_df['Date'].dt.strftime('%Y-%m-%d')
-        # print(df)
-        # print(df.dtypes)
-
-        # print(user_pain_df['date_day'])
         timestamp = tmp_date_df['date_str'].values.tolist()
-        # # print(tmp_timestamp)
-        # # timestamp = [n // 1000000 for n in tmp_timestamp]
-        # # Format : 1602028800000 ms
-        # print(timestamp)
 
         data = {
             'timestamp': timestamp,
