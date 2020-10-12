@@ -8,6 +8,7 @@ import pandas as pd
 from trackers.models import PainSymptom
 from django.conf import settings
 from sqlalchemy import create_engine
+from datetime import datetime
 
 
 class ChartView(View):
@@ -44,11 +45,17 @@ class ChartData(LoginRequiredMixin, UserPassesTestMixin, APIView):
         all_pain_df = pd.read_sql('trackers_painsymptom', engine)
         user_pain_df = all_pain_df[(all_pain_df.user_id == user.id)]
 
-        # user_pain_df['date_day'] = pd.to_datetime(
-        #     user_pain_df['date_day'], unit='s')
+        # user_pain_df['date_day'].apply(lambda x: x.strftime('%d/%m/%Y %H:%M'))
+        # print(user_pain_df['date_day'])
+        # print(type(user_pain_df['date_day']))
+        timestamp_lst = user_pain_df['date_day'].values.tolist()
+        # print(timestamp_lst1)
+        # timestamp_lst = [datetime.fromtimestamp(
+        #     x).strftime('%d/%m/%Y %H:%M') for x in timestamp_lst1]
+        # print(timestamp_lst)
 
         data = {
-            'timestamp': user_pain_df['date_day'].values.tolist(),
+            'timestamp': timestamp_lst,
             'intensity_y': user_pain_df['intensity'].values.tolist(),
         }
 
