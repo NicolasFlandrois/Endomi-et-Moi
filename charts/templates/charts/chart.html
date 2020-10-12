@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Wed 07 October 2020 16:50:14
-Last Modified time: Thu 08 October 2020 00:47:08 
+Last Modified time: Mon 12 October 2020 14:31:22 
 
  -->
 
@@ -17,6 +17,27 @@ Last Modified time: Thu 08 October 2020 00:47:08
 var endpoint = '/graphs/api/chart/data/'
 var intensity_x = []
 var intensity_y = []
+var commonOptions = {
+        scales: {
+          xAxes: [{
+            type: 'time',
+            time: {
+              displayFormats: {
+                millisecond: 'mm:ss:SSS'
+              }
+            }
+          }],
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        },
+        legend: {display: false},
+        tooltips:{
+          enabled: false
+        }
+    };
 $.ajax({
     method:"GET",
     url: endpoint,
@@ -25,23 +46,27 @@ $.ajax({
         intensity_y = data.intensity_y
         var ctx = document.getElementById('myChart')
         var myChart = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
-                labels: intensity_x,
-                datasets: [{
+                  labels: timestamps
+                            .map(t => t.toLocaleString([], { month: '2-digit', day: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })),
+                  datasets: [{
                     label: 'Intensité de la douleur',
                     data: intensity_y,
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                        }
-                    }
+                    borderColor: '#F06072',
+                    borderWidth: 1,
+
+                options: Object.assign({}, commonOptions, {
+                    title:{
+                        display: true,
+                        text: "Pain",
+                        fontSize: 18
+          }
+        })
+
                 }]
-            }
+            },
+
         });
 
     },
@@ -60,7 +85,7 @@ $.ajax({
       <div class="m-4 col-12">
         <h1>Intensité de la Douleur dans le temps</h1>
         <div>
-            <canvas id="myChart" width="400" height="auto"></canvas>
+            <canvas id="myChart" height="200" width="300" height="auto"></canvas>
         </div>
       </div>
   </div>
