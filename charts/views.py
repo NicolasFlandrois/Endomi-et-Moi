@@ -45,10 +45,20 @@ class ChartData(LoginRequiredMixin, UserPassesTestMixin, APIView):
         all_pain_df = pd.read_sql('trackers_painsymptom', engine)
         user_pain_df = all_pain_df[(all_pain_df.user_id == user.id)]
 
+        df = pd.DataFrame()
+
+        df['year'] = pd.DatetimeIndex(user_pain_df['date_day']).year
+        df['month'] = pd.DatetimeIndex(user_pain_df['date_day']).month
+        df['day'] = pd.DatetimeIndex(user_pain_df['date_day']).day
+        print(df)
+        print(df.dtypes)
+
+        print(user_pain_df['date_day'])
         tmp_timestamp = user_pain_df['date_day'].values.tolist()
+        print(tmp_timestamp)
         timestamp = [n // 1000000 for n in tmp_timestamp]
-        # timestamp = [datetime.fromtimestamp(
-        #     n // 1000000).strftime('%c') for n in tmp_timestamp]
+        # Format : 1602028800000 ms
+        print(timestamp)
 
         data = {
             'timestamp': timestamp,
