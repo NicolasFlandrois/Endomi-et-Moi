@@ -1,0 +1,97 @@
+<!--
+
+HTML5
+-*- coding: utf-8 -*-
+Author: Nicolas Flandrois
+Date:   Wed 07 October 2020 16:50:14
+Last Modified time: Mon 12 October 2020 17:59:06 
+
+ -->
+
+<!-- Description: HTML Skeleton for Chart.JS rendering -->
+{% extends "home/base.html" %}
+
+<script>
+{% block jquery %}
+
+var endpoint = '/graphs/api/chart/data/'
+var intensity_x = []
+var intensity_y = []
+var commonOptions = {
+      scales: {
+        xAxes: [ {
+            display: true,
+            type: 'time',
+            time: {
+              parser: 'DD/MM/YYYY HH:mm',
+              tooltipFormat: 'll HH:mm',
+              unit: 'day',
+              unitStepSize: 1,
+              displayFormats: {
+                'day': 'DD/MM/YYYY'
+              }
+            }
+          }],
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    };
+$.ajax({
+    method:"GET",
+    url: endpoint,
+    success: function(data){
+        timestamp = data.timestamp;
+        intensity_y = data.intensity_y;
+
+        var ctx = document.getElementById('myChart')
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: timestamp,
+                datasets: [{
+                    label: 'Intensité de la douleur',
+                    data: intensity_y,
+                    borderColor: '#F06072',
+                    borderWidth: 1,
+
+                options: Object.assign({}, commonOptions, {
+                    title:{
+                        display: true,
+                        text: "Pain",
+                        fontSize: 18
+          }
+        })
+
+                }]
+            },
+
+        });
+
+    },
+    error: function(error_data){
+        console.log("error")
+        console.log(error_data)
+    }
+})
+
+{% endblock %}
+</script>
+
+{% block content %}
+  <!-- Your Chart Here -->
+  <div class="row">
+      <div class="m-4 col-12">
+        <h1>Intensité de la Douleur dans le temps</h1>
+        <div>
+            <canvas id="myChart" height="200" width="300" height="auto"></canvas>
+        </div>
+      </div>
+  </div>
+  <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
+  <p class="col d-flex invisible" style="margin-bottom: 50px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
+  <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
+
+{% endblock %}
