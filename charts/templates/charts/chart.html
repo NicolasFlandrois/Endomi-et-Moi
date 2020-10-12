@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Wed 07 October 2020 16:50:14
-Last Modified time: Mon 12 October 2020 14:33:02 
+Last Modified time: Mon 12 October 2020 15:06:56 
 
  -->
 
@@ -18,12 +18,17 @@ var endpoint = '/graphs/api/chart/data/'
 var intensity_x = []
 var intensity_y = []
 var commonOptions = {
-        scales: {
-          xAxes: [{
+      scales: {
+        xAxes: [ {
+            display: true,
             type: 'time',
             time: {
+              parser: 'MM/DD/YYYY HH:mm',
+              tooltipFormat: 'll HH:mm',
+              unit: 'day',
+              unitStepSize: 1,
               displayFormats: {
-                millisecond: 'mm:ss:SSS'
+                'day': 'MM/DD/YYYY'
               }
             }
           }],
@@ -32,23 +37,20 @@ var commonOptions = {
                     beginAtZero:true
                 }
             }]
-        },
-        legend: {display: false},
-        tooltips:{
-          enabled: false
         }
     };
 $.ajax({
     method:"GET",
     url: endpoint,
     success: function(data){
-        intensity_x = data.intensity_x
+        timestamp = moment(data.timestamp).valueOf();
         intensity_y = data.intensity_y
+        console.log(timestamp);
         var ctx = document.getElementById('myChart')
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: intensity_x,
+                labels: timestamp,
                 datasets: [{
                     label: 'Intensité de la douleur',
                     data: intensity_y,
