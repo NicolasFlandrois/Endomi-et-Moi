@@ -1,0 +1,5 @@
+test:
+  adapter: mysql2
+  database: endomi
+  username: TRAVIS
+  encoding: utf8

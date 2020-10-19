@@ -2,64 +2,55 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 02 June 2020 15:28:13
-# Last Modified time: Tue 16 June 2020 14:39:06 
+# Last Modified time: Mon 19 October 2020 22:20:42 
 
 # Description:
 from django.test import TransactionTestCase
-from users.forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from trackers.forms import PainTrackerForm, SysDigestForm
+from django.contrib.auth.models import User
+from datetime import datetime
 
 
 class TestForms(TransactionTestCase):
-    """Class Testing Forms in Users App"""
+    """Class Testing Forms in Trackers App"""
 
-    def test_UserRegisterForm_valid_data(self):
-        """Testing UserRegisterForm Class - Success Valid Form"""
-        form = UserRegisterForm(data={
-                                'username': 'TestForm_1',
-                                'email': 'boggusmail@boggusmail.net',
-                                'password1': 'jqsdBki_"E!',
-                                'password2': 'jqsdBki_"E!'
-                                })
-        self.assertTrue(form.is_valid())
+    def test_PainTrackerForm(self):
+        """Testing PainTrackerForm Class"""
 
-    def test_UserRegisterForm_no_data(self):
-        """Testing UserRegisterForm Class
-        - Not Successfull , form not valid"""
-        form = UserRegisterForm(data={})
+        self.user_1 = User.objects.create_user(
+            username='testuser', password='12345',
+            email='boggusmail@boggusmail.net'
+        )
+
+        form = PainTrackerForm(data={
+            'date_added': datetime(2020, 9, 10),
+            'user': self.user_1,
+            'date_day': datetime(2020, 9, 8),
+            'time_of_day': 'Matin',
+            'intensity': 10,
+            'location': 'Plexus',
+            'other_loc': 'Here'
+        })
+        self.assertFalse(form.is_valid())
+
+    def test_SysDigestForm(self):
+        """Testing SysDigestForm Class"""
+        self.user_1 = User.objects.create_user(
+            username='testuser', password='12345',
+            email='boggusmail@boggusmail.net'
+        )
+
+        form = SysDigestForm(data={
+            'date_added': datetime(2020, 9, 10),
+            'user': self.user_1,
+            'food': 'Fruits',
+            'meal': 'Repas léger',
+            'nb_meal': 'Plus de 3 Repas',
+            'digest': 'Gas',
+            'transit': 'Normale',
+            'other_food': 'Test_66',
+            'other_digest': 'Test_99',
+            'other_transit': 'Test_BB8'
+        })
 
         self.assertFalse(form.is_valid())
-        self.assertEquals(len(form.errors), 4)
-
-    def test_UserUpdateForm_valid_data(self):
-        """Testing UserUpdateForm Class - Success Valid Form"""
-        form = UserUpdateForm(data={
-            'username': 'TestForm_1',
-            'email': 'boggusmail@boggusmail.net'
-        })
-        self.assertTrue(form.is_valid())
-
-    def test_UserUpdateForm_no_data(self):
-        """Testing UserUpdateForm Class
-        - Not Successfull , form not valid"""
-        form = UserUpdateForm(data={})
-
-        self.assertFalse(form.is_valid())
-        self.assertEquals(len(form.errors), 2)
-
-    def test_ProfileUpdateForm_valid_data(self):
-        """Testing ProfileUpdateForm Class - Success Valid Form"""
-        form = ProfileUpdateForm(data={
-            'image': 'profile_default.jpg'
-        })
-        self.assertTrue(form.is_valid())
-
-    # def test_ProfileUpdateForm_no_data(self):
-    #     """Testing ProfileUpdateForm Class -
-    # Not Successfull , form not valid"""
-    #     form = ProfileUpdateForm(data={})
-
-    #     self.assertFalse(form.is_valid())
-    #     self.assertEquals(len(form.errors), 1)
-
-    # NB: This test cannot take place, as I installed a default value for this
-    # field, therefore, it cannot get False

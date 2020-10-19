@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 02 June 2020 15:28:13
-# Last Modified time: Tue 16 June 2020 14:39:06 
+# Last Modified time: Mon 19 October 2020 22:31:23 
 
 # Description:
 from django.test import TestCase, Client
@@ -12,13 +12,12 @@ from users.models import Profile
 
 
 class TestViews(TestCase):
-    """Class Testing Views in Users App"""
+    """Class Testing Views in Charts App"""
 
     def setUp(self):
         """Set Up variables used in this test"""
         self.client = Client()
-        self.register_url = reverse('register')
-        self.profile_url = reverse('profile')
+        self.chart_url = reverse('graph')
 
         self.user_1 = User.objects.create_user(
             username='testuser', password='12345',
@@ -26,15 +25,9 @@ class TestViews(TestCase):
         )
 
     # Testing Function based views
-    def test_register_GET(self):
-        """Testing the register GET method's function"""
-        response = self.client.get(self.register_url)
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'users/register.html')
-
-    def test_profile_GET(self):
-        """Testing the profile GET method's function"""
+    def test_charts_GET(self):
+        """Testing the charts GET method's function"""
         logged_in = self.client.login(username='testuser', password='12345')
-        response = self.client.get(self.profile_url)
+        response = self.client.get(self.chart_url)
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'users/profile.html')
+        self.assertTemplateUsed(response, 'charts/chart.html')
