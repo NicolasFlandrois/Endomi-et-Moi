@@ -1,0 +1,31 @@
+language: python
+python:
+  - '3.8'
+
+branches:
+  only:
+    - travis
+
+services:
+  - mysql
+
+env:
+  global:
+    - ENV=STAGING
+    - MYSQL_USER=travis
+    - MYSQL_PASS=travis123
+    - SECRET_KEY=Fvm_3tBlsMcrEg-3cNGQwb-FVC-SXuS4wcrRvLUaSJF9on3mem_39Sg1BjtLaZRivs
+
+
+before_install:
+  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('travis123') where User='travis'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql_upgrade -u travis -ptravis123
+  - sudo service mysql restart
+
+install:
+  - pip3 install coverage
+  - pip3 install -r requirements.txt
+
+script:
+  - python3 ./manage.py test
+  - coverage run manage.py test

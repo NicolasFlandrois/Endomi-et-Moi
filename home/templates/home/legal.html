@@ -4,7 +4,7 @@ HTML5
 -*- coding: utf-8 -*-
 Author: Nicolas Flandrois
 Date:   Tue 02 June 2020 23:19:33
-Last Modified time: Tue 16 June 2020 14:29:46 
+Last Modified time: Mon 19 October 2020 23:22:10 
 
  -->
 
@@ -14,13 +14,13 @@ Last Modified time: Tue 16 June 2020 14:29:46
 {% block content %}
 
   <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
-  <p class="col d-flex invisible" style="margin-bottom: 50px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
-  <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
+  <!-- <p class="col d-flex invisible" style="margin-bottom: 50px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>-->
+   <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
 
-<section class="bg-title text-white">
+<section class="bg-title text-black">
         <div class="container text-center box">
             <p>
-                <h3 class="mb-4">Mentions légales</h3>
+                <h1 class="mb-4">Mentions légales</h1>
             </p>
         </div>
 </section>
@@ -28,33 +28,47 @@ Last Modified time: Tue 16 June 2020 14:29:46
 <section>
         <div class="container">
             <div class="row">
+                <div class="col-lg-12 text-justify">
+                    <hr>
+                    <h2 class="section-heading">Vos Données Personnels</h2>
+                    <ul>
+                        <li>En Accords avec la <a href="https://gdpr.eu/" target="_blank">RGPD</a>, nous prenons soins de vos données.</li>
+                        <li>Nous ne transmétons pas vos données personnels à des tiers commerciaux, avec ou sans votre Accords.</li>
+                        <li><p>Nous avons construit cette plateforme afin de vous offrir un outil pour mieux comprendre votre relation à l'endométriose.</p>
+                            <p>Nous aimerions que tout ce travail de fourmis puisse également être utile à la recherche médicale, et aider d'autres femmes en difficultées face à cette maladie.</p>
+                            <p>Aussi vous pouvez nous demander de partager vos données Annonymes à la recherche médicale. Il vous suffit pour celà de cocher la case prévue à cet éffet dans votre profile.</p>
+                            <p>Nous vous tiendrons au courant directement, avant tous transfers de données dans un but de recherche médicale.</p></li>
+                    </ul>
+                    <hr>
+                </div>
                 <div class="col-lg-8 mx-auto text-center">
+
                     <h4 class="section-heading">Droits d'auteur:</h4>
                     <hr class="my-4">
                     <p class="mb-5">
                         Template Bootstrap utilisé:
-                        <a href="" title="Template Bootstrap" target="_blank">
-                            Author's name here
+                        <a href="http://startbootstrap.com/template-overviews/simple-sidebar/" title="Template Bootstrap" target="_blank">
+                            Copyright 2013-2020 Start Bootstrap LLC. Code released under the MIT license.
                         </a>
                         <br>
 
                         Image de fond de la page d'accueil & Image de l’entête par
-                        <a href="" target="_blank">
-                            Author's name here
+                        <a href="https://unsplash.com/photos/IJYX0S1cVTg" target="_blank">
+                            Breno Machado &#169;2015
                         </a>
                         <br>
 
-                        Icône "icon" par
-                        <a href="" target="_blank">
-                            Author's name here
+                        Icône "fav icon" par
+                        <a href="https://www.endofrance.org/" target="_blank">
+                            EndoFrance.org
                         </a>
                         <br>
 
-                        Logo "Endometriose" par
+                        <!-- Logo "Endometriose" par
                         <a href="" target="_blank">
                             Copyright &copy; Endomi &reg;
                         </a>
-                        <br>
+                        <br> -->
                     </p>
                 </div>
 
@@ -68,7 +82,7 @@ Last Modified time: Tue 16 June 2020 14:29:46
                         </a>
                         <br>
                     </p>
-                    <hr class="my-4">
+                    <!-- <hr class="my-4"> -->
                     <p class="mb-5">
                         Les Fichiers média sont hébergé par les services
                         <a href="https://aws.amazon.com/s3/" target="_blank">
@@ -79,13 +93,13 @@ Last Modified time: Tue 16 June 2020 14:29:46
                 </div>
 
                 <div class="col-lg-8 mx-auto text-center">
-                    <h4 class="section-heading"><a href="{% url 'home' %}?#contact" class="text-decoration-none">Contact:</a></h4>
+                    <h4 id="contact" class="section-heading"><a href="{% url 'legal' %}?#contact" class="text-decoration-none">Contact:</a></h4>
                     <hr class="my-4">
                     <h6>Endomi et moi &reg; </h6>
                     <p class="mb-5">
                         Téléphone: +33 (0) 1 PH 0N 3_ M3 <br>
                         Mail:
-                        <a href="mailto:contact@pur-beurre.com" target="_blank">contact@pur-beurre.com</a>
+                        <a href="mailto:contact@endomi.com" target="_blank">contact@endomi.com</a>
                     </p>
                 </div>
             </div>
