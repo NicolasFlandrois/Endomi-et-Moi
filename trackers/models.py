@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Nicolas Flandrois
 # Date:   Tue 16 June 2020 14:23:30
-# Last Modified time: Mon 19 October 2020 09:19:57 
+# Last Modified time: Mon 19 October 2020 09:19:57
 
 # Description:
 
@@ -55,7 +55,8 @@ class PainSymptom(models.Model):
         cat='loc', show=True).order_by('-name')
     TIME_SET = Constants.objects.all().filter(
         cat='dtime', show=True)
-    # locs = []  # Activate this variable when applying new migrations
+    # LOCS = []  # Activate this variable when applying new migrations
+    # TIME_SET = []  # Activate this variable when applying new migrations
     # Fetch all choices option from Constants, only those show=True
 
     id = models.AutoField(primary_key=True)
