@@ -29,3 +29,10 @@ It came from the idea that endometriosis' symptoms may be influenced by
 external factors. This project tends/attempts to offer a tool for
 endometriosis patients,to track those potential factors, and identify them
 through stats and graphs.
+
+---
+# You would like to sponsir this project?
+
+- Monero Donations (XMR): 8ArhDc2qhcpGo1Py3YVPhj7jEDtNdaNdZJxiS37PFgMz5QVNN3onQM1H24hwMN5VZpY35JfCujmYyKAkfUo5H9ZcJSNLWMv
+- [Patreon.com](patreon.com/NicolasFlandrois)
+- [Buymeacoffee.com](buymeacoffee.com/Z6yBWKzV3)
